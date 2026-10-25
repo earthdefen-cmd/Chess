@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chess Starter</title>
+  <style>
+    body {
+      background: #222;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    .board {
+      width: 320px;
+      height: 320px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      border: 5px solid #111;
+    }
+
+    .square {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .light {
+      background: #f0d9b5;
+    }
+
+    .dark {
+      background: #b58863;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>♟️ Chess Starter</h1>
+  <p>Learn chess. Play chess. Get better.</p>
+
+  <div class="board" id="board"></div>
+
+  <script>
+    const board = document.getElementById("board");
+
+    const pieces = [
+      "♜","♞","♝","♛","♚","♝","♞","♜",
+      "♟","♟","♟","♟","♟","♟","♟","♟",
+      "","","","","","","","",
+      "","","","","","","","",
+      "","","","","","","","",
+      "","","","","","","","",
+      "♙","♙","♙","♙","♙","♙","♙","♙",
+      "♖","♘","♗","♕","♔","♗","♘","♖"
+    ];
+
+    for (let i = 0; i < 64; i++) {
+      const square = document.createElement("div");
+
+      square.classList.add("square");
+
+      if ((Math.floor(i / 8) + i) % 2 === 0) {
+        square.classList.add("light");
+      } else {
+        square.classList.add("dark");
+      }
+
+      square.textContent = pieces[i];
+
+      board.appendChild(square);
+    }
+  </script>
+
+</body>
+</html>
